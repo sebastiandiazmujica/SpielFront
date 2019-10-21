@@ -24,4 +24,6 @@ const routes: Routes = [
   ],
   declarations: [IntroPage]
 })
-export class IntroPageModule {}
+export class IntroPageModule {
+
+}

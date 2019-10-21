@@ -1,38 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 ion-content {
-    font-family: "Times New Roman", Times, serif;
-  }
-  ion-slides {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+ion-slides {
     background-color: white;
     height: 100%;
     max-width: 800px;
-  }
-  .swiper-slide {
+}
+
+.swiper-slide {
     display: block;
     margin-bottom: 64px;
     background-color: white;
-  }
-  ion-slide > h1,
-  h2 {
+}
+
+ion-slide>h1,
+h2 {
     margin: 0 0 0 0;
     color: var(--ion-color-primary);
-  }
-  ion-slide > p {
-    font-style: italic;
+    font-weight: bold;
+}
+
+ion-slide>p {
     font-size: 22px;
     padding: 1em 1em 1em 1em;
-  }
-  ion-slide > ion-icon {
+}
+
+ion-slide>ion-icon {
     color: var(--ion-color-success);
     font-size: 48px;
-  }
-  ion-slide > ion-icon[name="close"] {
+}
+
+ion-slide>ion-icon[name="close"] {
     float: right;
     color: var(--ion-color-primary);
     font-size: 30px;
-  }
-  ion-slide > img {
-    max-height: 20%;
-    max-width: 20%;
-    margin: 64px 0;
-    border-radius: 60px;
-  }
+}
+
+ion-slide>img {
+    margin-top: 2em;
+    max-height: 80vh;
+    max-width: 80vw;
+    // margin: 64px 0;
+    // border-radius: 60px;
+}

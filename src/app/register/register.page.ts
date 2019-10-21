@@ -55,6 +55,6 @@ export class RegisterPage {
   }
 
   register(information){
-    this.navCtrl.navigateForward("/profile");
+    this.navCtrl.navigateForward("/tabs/profile-tab");
   }
 }

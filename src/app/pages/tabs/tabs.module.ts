@@ -14,9 +14,9 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
-      { path: 'home-tab', loadChildren: '../home-tab/home-tab.module#HomeTabPageModule'},
-      // {path: 'home-tab', loadChildren: () => import('../home-tab/home-tab.module').then( m => m.HomeTabPageModule) 
-      // , canActivate:[IntroGuard]},
+      // { path: 'home-tab', loadChildren: '../home-tab/home-tab.module#HomeTabPageModule'},
+      {path: 'home-tab', loadChildren: () => import('../home-tab/home-tab.module').then( m => m.HomeTabPageModule) 
+      , canActivate:[IntroGuard]},
       { path: 'explore', loadChildren: '../explore/explore.module#ExplorePageModule' },
       { path: 'notifications', loadChildren: '../notifications/notifications.module#NotificationsPageModule' },
       { path: 'profile-tab', loadChildren: '../profile-tab/profile-tab.module#ProfileTabPageModule' },
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/home-tab',
+    redirectTo: '/intro',
     pathMatch: 'full'
   }
 ];

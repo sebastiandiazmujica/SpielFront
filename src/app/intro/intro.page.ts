@@ -19,19 +19,19 @@ export class IntroPage implements OnInit {
 
   slides = [
   {
-    imageSrc : "assets/img/logo.png",
+    imageSrc : "../../assets/img/intro-image1.jpg",
     subTitle: "Regístrate",
     description: "Regístrate para iniciar tu mejor experiencia de juego",
     icon:"null"
   },
   {
-    imageSrc : "assets/img/logo.png",
+    imageSrc : "../../assets/img/intro-image2.jpg",
     subTitle: "Encuentra",
     description: "Encuentra tu compañero de juego",
     icon:"null"
   },
   {
-    imageSrc : "assets/img/logo.png",
+    imageSrc : "../../assets/img/intro-image3.jpg",
     subTitle: "Organiza",
     description: "Organiza tus partidos",
     icon:"null"
@@ -43,7 +43,7 @@ export class IntroPage implements OnInit {
 
   finish(){
     this.storage.set('isIntroShowed', true);
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/login");
   }
 
   ngOnInit() {

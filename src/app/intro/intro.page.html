@@ -1,12 +1,13 @@
 <ion-content padding>
-    <ion-slides  pager="true" [options]="slideOpt">
-        <ion-slide *ngFor= "let slide of slides">
-          <ion-icon name="close" (click)="finish()"></ion-icon>
-          <h2>{{slide.subTitle}}</h2>
-          <p>
-            {{slide.description}}
-          </p>
-          <ion-icon name={{slide.icon}}></ion-icon>
+    <ion-slides pager="true" [options]="slideOpt">
+        <ion-slide *ngFor="let slide of slides">
+            <ion-icon name="close" (click)="finish()"></ion-icon>
+            <h2>{{slide.subTitle}}</h2>
+            <img src="{{slide.imageSrc}}">
+            <p>
+                {{slide.description}}
+            </p>
+            <ion-icon name={{slide.icon}}></ion-icon>
         </ion-slide>
-      </ion-slides>
+    </ion-slides>
 </ion-content>
