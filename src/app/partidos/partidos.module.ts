@@ -10,7 +10,12 @@ import { PartidosPage } from './partidos.page';
 const routes: Routes = [
   {
     path: '',
-    component: PartidosPage
+    component: PartidosPage,
+    children: [
+      {
+        path: 'partido1', loadChildren: '/partidos.detailpage1.html'
+      }
+    ]
   }
 ];
 
