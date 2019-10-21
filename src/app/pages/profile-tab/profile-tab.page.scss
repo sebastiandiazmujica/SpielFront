@@ -1,0 +1,25 @@
+ion-avatar {
+    width: 10em;
+    height: 10em;
+    margin: 2em auto;
+}
+
+#partido img {
+    width: 3em;
+    height: 3em;
+    margin: 1em auto;
+}
+
+#partido {
+    margin: 0;
+    display: inline-block;
+}
+
+#partido p {
+    margin: auto 0;
+}
+
+.partido-futbol {
+    display: flex;
+    justify-content: center;
+}

@@ -11,11 +11,6 @@ const routes: Routes = [
   {
     path: '',
     component: PartidosPage,
-    children: [
-      {
-        path: 'partido1', loadChildren: '/partidos.detailpage1.html'
-      }
-    ]
   }
 ];
 
