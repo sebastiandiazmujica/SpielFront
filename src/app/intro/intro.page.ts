@@ -22,19 +22,19 @@ export class IntroPage implements OnInit {
     imageSrc : "../../assets/img/intro-image1.jpg",
     subTitle: "Regístrate",
     description: "Regístrate para iniciar tu mejor experiencia de juego",
-    icon:"null"
+    icon:"close"
   },
   {
     imageSrc : "../../assets/img/intro-image2.jpg",
     subTitle: "Encuentra",
     description: "Encuentra tu compañero de juego",
-    icon:"null"
+    icon:"close"
   },
   {
     imageSrc : "../../assets/img/intro-image3.jpg",
     subTitle: "Organiza",
     description: "Organiza tus partidos",
-    icon:"null"
+    icon:"close"
   },
   ]
 

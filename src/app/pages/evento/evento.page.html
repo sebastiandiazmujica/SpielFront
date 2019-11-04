@@ -1,0 +1,16 @@
+<ion-header>
+    <!-- <ion-toolbar> <ion-segment> <ion-segment-button value="all" checked> Mis Eventos </ion-segment-button> <ion-segment-button value="favorites"> Mis Inscripciones </ion-segment-button> </ion-segment> </ion-toolbar> -->
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="icons" color="primary">
+            <!-- <ion-segment-button value="friends" (ionSelect)=""> -->
+            <ion-segment-button>
+                <ion-icon name="bookmark"></ion-icon> Creados </ion-segment-button>
+            <!-- <ion-segment-button value="enemies" (ionSelect)=""> -->
+            <ion-segment-button>
+                <ion-icon name="bookmark"></ion-icon> Inscrito </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <p>Eventos works!</p>
+</ion-content>
