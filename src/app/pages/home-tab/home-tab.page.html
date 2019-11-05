@@ -5,39 +5,17 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
+    <ion-card *ngFor= "let evento of eventos">
         <ion-card-header>
-            <img src="../../../assets/img/evento1.jpg" />
-            <ion-card-title>Street Club Soccer</ion-card-title>
-            <ion-card-subtitle>Bogotá, Colombia</ion-card-subtitle>
+            <ion-avatar > 
+                <img src="../../../assets/img/evento2.jpg" />
+            </ion-avatar>
+            <ion-card-title>Evento de Futbol</ion-card-title>
+            <ion-card-subtitle>Organizado por {{evento.organizacion}} , <strong> Quedan {{evento.cupos}} Cupos </strong></ion-card-subtitle>
         </ion-card-header>
-
         <ion-card-content>
-            Ven y juega con nosotros en el parque de Usaquén. Vamos a tener muchas actividades y hay varias categorías de edad.
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-        <ion-card-header>
-            <img src="../../../assets/img/evento2.jpg" />
-            <ion-card-title>Torneo Maxi 2019</ion-card-title>
-            <ion-card-subtitle>Cali, Colombia</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-            Nuevo torneo con muchos premios para que te animes a venir con todos tus amigos. Tenemos categorías desde los 18 años y toca traer cédula para registrarse.
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-        <ion-card-header>
-            <img src="../../../assets/img/evento3.jpg" />
-            <ion-card-title>Torneo Fútbol 8</ion-card-title>
-            <ion-card-subtitle>Medellín, Colombia</ion-card-subtitle>
-        </ion-card-header>
-
-        <ion-card-content>
-            Torneo para que vengas con todos los de tu universidad y puedas jugar y ganarte un premio de 4.000.000 COP. Solo tienen que registrarse por medio del link que su universidad les provea para poder jugar.
+            Ven y juega con nosotros en {{evento.lugar}}. 
+            El evento inicia el {{evento.fechaInicio}} y termina el {{evento.fechaFin}}
         </ion-card-content>
     </ion-card>
 </ion-content>
