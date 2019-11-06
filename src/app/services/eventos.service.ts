@@ -16,9 +16,14 @@ export class EventosService {
   usuario: Usuario;
 
 
+  htpp : HttpClient;
+
+
+  // usuarios : any;
 
   constructor( private http: HttpClient) {
-    this.usuario = null;
+    this.http = http;
+
    }
 
   httpOptions = {
@@ -53,8 +58,15 @@ export class EventosService {
 
 
 
+
+
+
   getUsuarioActual(){
     return this.usuario;
+  }
+
+  actualizarUsuario(usuario){
+    this.usuario= usuario;
   }
 
 
@@ -69,17 +81,23 @@ export class EventosService {
     )
   }
 
-  getUsuariosHttp(login) : Observable<Usuario>{
-    return this.http.get<Usuario>(this.base_path + 'gen?tabla=usuario&login=' + login);
-  }
+  // getUsuariosHttp(login) : Observable<Usuario>{
+  //   return this.http.get<Usuario>(this.base_path + 'gen?tabla=usuario&login=' + login);
+  // }
 
-  getUsuarioLogin(credentials) {
-    this.getUsuariosHttp(credentials.email).
-    subscribe(response => {
-      this.usuario = response;
-      this.usuario = this.usuario[0];
-    })
-  }
+  // getUsuarioLogin(credentials) {
+  //   this.getUsuariosHttp(credentials.email).
+  //   subscribe(response => {
+  //     this.usuario = response;
+  //     this.usuario = this.usuario[0];
+  //   })
+  // }
+
+
+
+
+
+
 
 
 

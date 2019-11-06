@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor= "let evento of eventos">
+    <ng-container *ngFor="let evento of eventos">
+    <ion-card *ngIf= "evento.cupos>0">
         <ion-card-header>
             <ion-avatar > 
                 <img src="../../../assets/img/evento2.jpg" />
@@ -17,6 +18,7 @@
             Ven y juega con nosotros en {{evento.lugar}}. 
             El evento inicia el {{evento.fechaInicio}} y termina el {{evento.fechaFin}}
         </ion-card-content>
-        <ion-button color="secondary" shape="round">Inscribirse</ion-button>
+        <ion-button color="secondary" shape="round" (click)="inscribirUsuario(evento.idevento, evento.cupos)">Inscribirse</ion-button>
     </ion-card>
+</ng-container>
 </ion-content>
