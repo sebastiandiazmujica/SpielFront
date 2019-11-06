@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, Platform } from '@ionic/angular';
 
 import { EventoPage } from './evento.page';
 
@@ -23,4 +23,12 @@ const routes: Routes = [
   ],
   declarations: [EventoPage]
 })
-export class EventoPageModule {}
+export class EventoPageModule {
+  
+  partidos: string = "creados";
+  isAndroid: boolean = false;
+
+  constructor(platform: Platform) {
+    this.isAndroid = platform.is('android');
+  }
+}

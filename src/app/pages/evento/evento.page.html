@@ -1,16 +1,67 @@
 <ion-header>
-    <!-- <ion-toolbar> <ion-segment> <ion-segment-button value="all" checked> Mis Eventos </ion-segment-button> <ion-segment-button value="favorites"> Mis Inscripciones </ion-segment-button> </ion-segment> </ion-toolbar> -->
-    <ion-toolbar>
-        <ion-segment [(ngModel)]="icons" color="primary">
-            <!-- <ion-segment-button value="friends" (ionSelect)=""> -->
-            <ion-segment-button>
-                <ion-icon name="bookmark"></ion-icon> Creados </ion-segment-button>
-            <!-- <ion-segment-button value="enemies" (ionSelect)=""> -->
-            <ion-segment-button>
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="partidos" color="primary">
+            <ion-segment-button value="creados">
+                <ion-icon name="clipboard"></ion-icon> Creados </ion-segment-button>
+            <ion-segment-button value="inscrito">
                 <ion-icon name="bookmark"></ion-icon> Inscrito </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
-    <p>Eventos works!</p>
+    <div [ngSwitch]="partidos">
+        <ion-list *ngSwitchCase="'creados'">
+            <div class="events">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Eliminar</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Eliminar</a>
+                    </div>
+                </div>
+                <ion-footer>
+                    <div>
+                        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+                            <ion-fab-button>
+                                <ion-icon name="add"></ion-icon>
+                            </ion-fab-button>
+                        </ion-fab>
+                    </div>
+                </ion-footer>
+            </div>
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'inscrito'">
+            <ion-item>
+                <!-- <ion-thumbnail item-start> -->
+                <!-- <img src="img/thumbnail-kitten-1.jpg"> -->
+                <!-- </ion-thumbnail> -->
+                <h2>Luna</h2>
+            </ion-item>
+            ...
+        </ion-list>
+    </div>
 </ion-content>
