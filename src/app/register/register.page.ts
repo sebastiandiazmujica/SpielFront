@@ -5,8 +5,9 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import { AuthenticateService } from "../services/authenticate.service";
 import { NavController } from "@ionic/angular";
+import { EventosService } from '../services/eventos.service';
+import { Usuario } from '../login/usuario';
 
 @Component({
   selector: "app-register",
@@ -14,6 +15,9 @@ import { NavController } from "@ionic/angular";
   styleUrls: ["./register.page.scss"]
 })
 export class RegisterPage {
+
+  usuario : Usuario;
+
   registerForm: FormGroup;
   validation_messages = {
     email: [
@@ -28,17 +32,19 @@ export class RegisterPage {
   errorMessage: string = "";
   constructor(
     private formBuilder: FormBuilder,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public eventosService : EventosService
   ) {
+    this.usuario = new Usuario();
     this.registerForm = this.formBuilder.group({
-      email: new FormControl(
+      login: new FormControl(
         "",
         Validators.compose([
           Validators.required,
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
         ])
       ),
-      password: new FormControl(
+      contrasena: new FormControl(
         "",
         Validators.compose([Validators.required, Validators.minLength(5)])
       ),
@@ -50,11 +56,35 @@ export class RegisterPage {
         "",
         Validators.compose([Validators.required])
       ),
+      posicion: new FormControl(
+        "",
+        Validators.compose([Validators.required])
+      ),
+      foto: new FormControl(
+        "",
+        Validators.compose([Validators.required])
+      ),
+      organizacion: new FormControl(
+        "",
+        Validators.compose([Validators.required])
+      ),
 
     });
   }
 
   register(information){
-    this.navCtrl.navigateForward("/tabs/profile-tab");
+    this.usuario.apellido= information.apellido;
+    this.usuario.asistencia = information.asistencia;
+    this.usuario.calificacion= information.calificacion;
+    this.usuario.contrasena = information.contrasena;
+    this.usuario.foto = information.foto;
+    this.usuario.idorganizacion = information.organizacion;
+    this.usuario.login = information.login;
+    this.usuario.nombre = information.nombre;
+    this.usuario.posicionpreferida = information.posicion;
+    console.log(this.usuario);
+    this.eventosService.crearUsuario(this.usuario).subscribe((response)=>{
+    this.navCtrl.navigateForward("/login");
+    });
   }
 }

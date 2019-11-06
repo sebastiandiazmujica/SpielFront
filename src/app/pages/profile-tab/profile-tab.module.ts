@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfileTabPage } from './profile-tab.page';
 
+
 const routes: Routes = [
   {
     path: '',
