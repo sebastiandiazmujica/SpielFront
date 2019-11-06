@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-evento',
   templateUrl: './evento.page.html',
@@ -21,8 +20,10 @@ export class EventoPage implements OnInit {
 
   ngOnInit() {
     this.http.get('http://spielback.com:8000/eventos').subscribe(data => {
-    this.events = data.json;
-    });
+    this.events = data;
+    this.events = this.events.json;
+  });
+  
   }
 
   getEventos(){
