@@ -18,7 +18,7 @@
             Ven y juega con nosotros en {{evento.lugar}}. 
             El evento inicia el {{evento.fechaInicio}} y termina el {{evento.fechaFin}}
         </ion-card-content>
-        <ion-button color="secondary" shape="round" (click)="inscribirUsuario(evento.idevento)">Inscribirse</ion-button>
+        <ion-button color="secondary" shape="round" (click)="inscribirUsuario(evento.idevento, evento.cupos)">Inscribirse</ion-button>
     </ion-card>
 </ng-container>
 </ion-content>
