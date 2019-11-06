@@ -19,6 +19,7 @@ const routes: Routes = [
       , canActivate:[IntroGuard]},
       { path: 'evento', loadChildren: '../evento/evento.module#EventoPageModule' },
       { path: 'profile-tab', loadChildren: '../profile-tab/profile-tab.module#ProfileTabPageModule' },
+      {path: 'create-evento', loadChildren: '../evento/create-evento/create-evento.module#CreateEventoPageModule'}
     ]
   },
   {

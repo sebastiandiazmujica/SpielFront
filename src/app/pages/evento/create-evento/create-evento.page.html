@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Crear Evento</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formgroup" (ngSubmit)="logForm()">
+
+        <ion-item>
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-input type="text" placeholder="Escriba una descripción" formControlName="descripcion"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Lugar</ion-label>
+            <ion-input type="text" placeholder="Escriba un lugar" formControlName="lugar"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Fecha Inicio</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" formControlName="fechainicio"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Fecha Fin</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" formControlName="fechafin"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Cupos</ion-label>
+            <ion-input type="number" placeholder="30" formControlName="cupos"></ion-input>
+        </ion-item>
+        <ion-button shape="round" color="success" type="submit" block>Crear</ion-button>
+    </form>
+</ion-content>

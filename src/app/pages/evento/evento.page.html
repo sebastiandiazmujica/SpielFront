@@ -13,55 +13,74 @@
     <div [ngSwitch]="partidos">
         <ion-list *ngSwitchCase="'creados'">
             <div class="events">
-                <div class="card">
+                <div class="card" *ngFor="let e of events">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">Evento {{e.idevento}}</h5>
+                        <p class="card-text">{{e.descripcion}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Lugar: {{e.lugar}}</li>
+                        <li class="list-group-item">Fecha Inicio: {{e.fechainicio}}</li>
+                        <li class="list-group-item">Organización: {{e.idorganizacion}}</li>
+                        <li class="list-group-item">Cupos: {{e.cupos}}</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link">Eliminar</a>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Eliminar</a>
-                    </div>
-                </div>
-                <ion-footer>
-                    <div>
-                        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-                            <ion-fab-button>
-                                <ion-icon name="add"></ion-icon>
-                            </ion-fab-button>
-                        </ion-fab>
-                    </div>
-                </ion-footer>
-            </div>
 
+            </div>
         </ion-list>
 
         <ion-list *ngSwitchCase="'inscrito'">
-            <ion-item>
-                <!-- <ion-thumbnail item-start> -->
-                <!-- <img src="img/thumbnail-kitten-1.jpg"> -->
-                <!-- </ion-thumbnail> -->
-                <h2>Luna</h2>
-            </ion-item>
-            ...
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Evento Inscrito 1</h5>
+                    <p class="card-text">Esta es la descripción del evento inscrito</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lugar: Cancha Javeriana</li>
+                    <li class="list-group-item">Fecha Inicio: 01/01/2020</li>
+                    <li class="list-group-item">Organización: Javeriana</li>
+                    <li class="list-group-item">Cupos: 45</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Retirarse</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Evento Inscrito 2</h5>
+                    <p class="card-text">Descripción de un evento para la Tadeo</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lugar: Universidad Tadeo</li>
+                    <li class="list-group-item">Fecha Inicio: 02/02/2020</li>
+                    <li class="list-group-item">Organización: Tadeo</li>
+                    <li class="list-group-item">Cupos: 50</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Retirarse</a>
+                </div>
+            </div>
         </ion-list>
     </div>
 </ion-content>
+<ion-footer *ngIf="partidos =='creados'">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="redirect()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+        <!-- <ion-fab-list side="top">
+            <ion-fab-button>
+                <ion-icon name="logo-facebook"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+                <ion-icon name="logo-twitter"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+                <ion-icon name="logo-youtube"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list> -->
+    </ion-fab>
+</ion-footer>
