@@ -1,4 +1,4 @@
-export class Usuario{
+export class Usuario {
 
     nombre : string;
 
@@ -8,7 +8,7 @@ export class Usuario{
 
     foto: string;
 
-    calificacion : string;
+    calificacion : number;
 
     asistencia : number; 
     
@@ -16,6 +16,8 @@ export class Usuario{
 
     contrasena : string;
 
-    idorganizacion : number;
-    
+    idorganizacion : number;    
+
+    constructor(){
+    }
 }

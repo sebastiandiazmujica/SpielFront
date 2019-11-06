@@ -8,14 +8,18 @@ import { retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class EventosService {
 
-  base_path = 'http://3.84.188.169:8000/';
+  base_path = 'http://54.208.191.186:8000/';
 
-  usuario=[];
+  usuario: Usuario;
 
 
-  constructor( private http: HttpClient) { }
+
+  constructor( private http: HttpClient) {
+    this.usuario = null;
+   }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,8 +27,7 @@ export class EventosService {
     })
   }
 
-   // Handle API errors
-   handleError(error: HttpErrorResponse) {
+  handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -41,21 +44,20 @@ export class EventosService {
   };
 
 
+
+
   getEventos(){
     return fetch("https://my-json-server.typicode.com/SebastianMujica22/demo/eventos100").then(response => response.json());
+    // return fetch(this.base_path + 'eventos').then(response => response.json());
   }
 
-  getUsuarios(){
-    return fetch("https://my-json-server.typicode.com/SebastianMujica22/demo/usuarios").then(response => response.json());
-  }
 
-  actualizarUsuario(usuario){
-    this.usuario = usuario;
-  }
-  
+
   getUsuarioActual(){
     return this.usuario;
   }
+
+
 
   //Crea un nuevo usuario
   crearUsuario(item): Observable<Usuario> {
@@ -65,6 +67,18 @@ export class EventosService {
       retry(2),
       catchError(this.handleError)
     )
+  }
+
+  getUsuariosHttp(login) : Observable<Usuario>{
+    return this.http.get<Usuario>(this.base_path + 'gen?tabla=usuario&login=' + login);
+  }
+
+  getUsuarioLogin(credentials) {
+    this.getUsuariosHttp(credentials.email).
+    subscribe(response => {
+      this.usuario = response;
+      this.usuario = this.usuario[0];
+    })
   }
 
 
