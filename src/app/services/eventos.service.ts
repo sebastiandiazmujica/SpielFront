@@ -58,6 +58,9 @@ export class EventosService {
 
 
 
+
+
+
   getUsuarioActual(){
     return this.usuario;
   }
