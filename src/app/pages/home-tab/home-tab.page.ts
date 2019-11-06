@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventosService} from '../../services/eventos.service'
 
 @Component({
   selector: 'app-home-tab',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeTabPage implements OnInit {
 
-  constructor() { }
+
+  eventos = [];
+
+  constructor(public eventosService: EventosService) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter(){
+    this.eventosService.getEventos().then( newEventos=>{
+      this.eventos = newEventos;
+    });
   }
 
 }

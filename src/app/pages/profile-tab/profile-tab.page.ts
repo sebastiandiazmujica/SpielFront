@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Events } from '@ionic/angular';
+import { EventosService } from 'src/app/services/eventos.service';
+import { Usuario } from 'src/app/login/usuario';
 
 @Component({
   selector: 'app-profile-tab',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileTabPage implements OnInit {
 
-  constructor() { }
+  usuario=[];
+  constructor(public events : Events, public eventosService : EventosService) { 
+  }
+
 
   ngOnInit() {
   }
 
+
+  ionViewDidEnter() {
+    this.usuario= this.eventosService.getUsuarioActual();
+    console.log(this.usuario);
+  }
 }

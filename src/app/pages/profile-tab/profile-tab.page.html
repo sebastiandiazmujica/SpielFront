@@ -4,9 +4,9 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngFor="let usuario of usuario">
     <ion-avatar>
-        <img src="../../../assets/img/profile-avatar.jpg">
+        <img src={{usuario.foto}}>
     </ion-avatar>
 
     <ion-list>
@@ -15,65 +15,35 @@
                 Nombre
             </ion-label>
             <ion-label class="ion-text-wrap">
-                Juan David Puentes
+                {{usuario.nombre  }} {{usuario.apellido}}
             </ion-label>
         </ion-item>
 
         <ion-item>
-            <ion-label>
-                Edad
-            </ion-label>
-            <ion-label class="ion-text-wrap">
-                27
-            </ion-label>
+                <ion-label>
+                    Organización ID
+                </ion-label>
+                <ion-label class="ion-text-wrap">
+                    {{usuario.idorganizacion}}
+                </ion-label>
+        </ion-item>
+        <ion-item>
+                <ion-label>
+                    Posición de juego preferida
+                </ion-label>
+                <ion-label class="ion-text-wrap">
+                    {{usuario.posicionpreferida}}
+                </ion-label>
         </ion-item>
 
         <ion-item>
-            <ion-label>
-                Deportes Favoritos
-            </ion-label>
-            <ion-label class="ion-text-wrap">
-                Fútbol, tennis
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>
-                Último partido
-            </ion-label>
-            <ion-label class="ion-text-wrap">
-                Partido de fútbol 5
-            </ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>Partidos jugados</ion-label>
-            <ion-badge slot="end">22</ion-badge>
+            <ion-label>Calificación</ion-label>
+            <ion-badge slot="end">{{usuario.calificacion}}%</ion-badge>
         </ion-item>
         <ion-item>
-            <ion-label>Partidos ganados</ion-label>
-            <ion-badge color="success" slot="end">14</ion-badge>
-        </ion-item>
-        <ion-item>
-            <ion-label>Partidos perdidos</ion-label>
-            <ion-badge color="warning" slot="end">8</ion-badge>
-        </ion-item>
-        <ion-item>
-            <ion-label>Trabajo en equipo</ion-label>
-            <ion-badge color="dark" slot="end">9.3</ion-badge>
-        </ion-item>
-        <ion-item>
-            <ion-label>Actitud</ion-label>
-            <ion-badge color="dark" slot="end">10</ion-badge>
-        </ion-item>
-        <ion-item>
-            <ion-label>Puntualidad</ion-label>
-            <ion-badge color="dark" slot="end">9</ion-badge>
-        </ion-item>
-        <ion-item>
-            <ion-label>Inasistencias</ion-label>
-            <ion-badge color="danger" slot="end">3</ion-badge>
-        </ion-item>
+                <ion-label>Asistencia</ion-label>
+                <ion-badge slot="end">{{usuario.asistencia}}%</ion-badge>
+            </ion-item>
     </ion-list>
 
 </ion-content>

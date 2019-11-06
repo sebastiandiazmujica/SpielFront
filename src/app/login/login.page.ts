@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { AuthenticateService } from '../services/authenticate.service';
-import { NavController } from '@ionic/angular';
+import { NavController, Events } from '@ionic/angular';
+import {EventosService} from '../services/eventos.service'
+import { Usuario } from './usuario';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,11 @@ export class LoginPage implements OnInit {
 
   errorMessage: string= "";
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticateService, private navCtrl: NavController) {
+  usuario : [{}];
+
+  idUsuario : string;
+
+  constructor(private formBuilder: FormBuilder, private navCtrl: NavController , private eventosService : EventosService, public events : Events) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -36,11 +44,24 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   loginUser(credentials) {
-    this.authService.loginUser(credentials).then(res => {
-      this.errorMessage = "";
-      this.navCtrl.navigateForward("/tabs/profile-tab");
+    this.eventosService.getUsuarios().then( newUsuarios =>{
+      this.usuario = newUsuarios.filter( e => e.login == credentials.email && e.contraseña==credentials.password);
+      this.eventosService.actualizarUsuario(this.usuario);
+      console.log(this.usuario);
     });
+    if(     this.usuario!=null   ){
+      this.idUsuario = credentials.email;
+      this.navCtrl.navigateForward("/tabs/home-tab");
+    }
+    else{
+      alert("Credenciales incorrectas");
+    }
   }
+
+
+
+
+
 
   goToRegister(){
     this.navCtrl.navigateForward("/register");
