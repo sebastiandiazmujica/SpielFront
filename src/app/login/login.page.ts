@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { NavController, Events } from '@ionic/angular';
 import {EventosService} from '../services/eventos.service'
@@ -17,11 +17,12 @@ export class LoginPage implements OnInit {
 
   errorMessage: string= "";
 
-  usuario : [{}];
+  usuario : Usuario;
+  
 
-  idUsuario : string;
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController , private eventosService : EventosService, public events : Events) {
+    this.usuario = new Usuario();
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -43,18 +44,29 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  loginUser(credentials) {
-    this.eventosService.getUsuarios().then( newUsuarios =>{
-      this.usuario = newUsuarios.filter( e => e.login == credentials.email && e.contraseña==credentials.password);
-      this.eventosService.actualizarUsuario(this.usuario);
-      console.log(this.usuario);
-    });
-    if(     this.usuario!=null   ){
-      this.idUsuario = credentials.email;
-      this.navCtrl.navigateForward("/tabs/home-tab");
+  // loginUser(credentials) {
+  //   this.eventosService.getUsuarios().then( newUsuarios =>{
+  //     this.usuario = newUsuarios.filter( e => e.login == credentials.email && e.contraseña==credentials.password);
+  //     this.eventosService.actualizarUsuario(this.usuario);
+  //     console.log(this.usuario);
+  //   });
+  //   if(     this.usuario!=null   ){
+  //     this.idUsuario = credentials.email;
+  //     this.navCtrl.navigateForward("/tabs/home-tab");
+  //   }
+  //   else{
+  //     alert("Credenciales incorrectas");
+  //   }
+  // }
+
+  loginUser2 (credentials) : void {
+    this.eventosService.getUsuarioLogin(credentials);
+    this.usuario = this.eventosService.getUsuarioActual();
+    if(this.usuario!=null && this.usuario.contrasena==credentials.password && this.usuario.login==credentials.email ){
+            this.navCtrl.navigateForward("/tabs/home-tab");
     }
     else{
-      alert("Credenciales incorrectas");
+            alert("Credenciales incorrectas");
     }
   }
 

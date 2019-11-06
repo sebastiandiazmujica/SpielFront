@@ -10,8 +10,9 @@ import { Usuario } from 'src/app/login/usuario';
 })
 export class ProfileTabPage implements OnInit {
 
-  usuario=[];
+  usuario : Usuario;
   constructor(public events : Events, public eventosService : EventosService) { 
+  this.usuario = new Usuario();
   }
 
 
@@ -21,6 +22,5 @@ export class ProfileTabPage implements OnInit {
 
   ionViewDidEnter() {
     this.usuario= this.eventosService.getUsuarioActual();
-    console.log(this.usuario);
   }
 }
