@@ -18,22 +18,30 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes, { onSameUrlNavigation: 'reload' }),
   ],
+  exports: [RouterModule],
   declarations: [EventoPage]
 })
 export class EventoPageModule {
-  
-  partidos: string; 
+
+  partidos: string;
   isAndroid: boolean = false;
-//   http: HttpClient;
-//   constructor(http: HttpClient) {
-//   this.partidos = "'creados'";
-//   this.http = http
-//   // this.http.get('https://swapi.co/api/films')
-//   //   .subscribe(data => {
-//   //     console.log('my data: ', data);
-//   //   })
-// }
+  //   http: HttpClient;
+  //   constructor(http: HttpClient) {
+  //   this.partidos = "'creados'";
+  //   this.http = http
+  //   // this.http.get('https://swapi.co/api/films')
+  //   //   .subscribe(data => {
+  //   //     console.log('my data: ', data);
+  //   //   })
+  // }
+  ngOnInit(): void {
+    this.router.events.pipe(
+      filter((event: RouterEvent) => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.fetchData();
+    });
+  }
 
 }

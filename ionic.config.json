@@ -1,7 +1,8 @@
 {
-    "name": "spiel",
-    "integrations": {
-        "cordova": {}
-    },
-    "type": "angular"
+  "name": "spiel",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
 }

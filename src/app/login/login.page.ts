@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
 
   // usuarios: any;
   
-
+  url: string = "spielback.com";
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController , private eventosService : EventosService, public events : Events , public http : HttpClient) {
     this.loginForm = this.formBuilder.group({
@@ -88,7 +88,7 @@ export class LoginPage implements OnInit {
 
 
   loginUser2(credentials): void {
-    this.http.get( 'http://54.208.191.186:8000/' + 'gen?tabla=usuario&login=' + credentials.email).subscribe(data => {
+    this.http.get( 'http://' + this.url + ':8000/' + 'gen?tabla=usuario&login=' + credentials.email).subscribe(data => {
       this.usuario = data["json"][0];
       console.log(this.usuario.apellido);
       this.eventosService.actualizarUsuario(this.usuario);

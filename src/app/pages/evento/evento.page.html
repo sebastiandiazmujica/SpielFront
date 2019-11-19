@@ -9,7 +9,12 @@
     </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles">
+        </ion-refresher-content>
+    </ion-refresher>
     <div [ngSwitch]="partidos">
         <ion-list *ngSwitchCase="'creados'">
             <div class="events">
@@ -25,7 +30,7 @@
                         <li class="list-group-item">Cupos: {{e.cupos}}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="card-link">Eliminar</a>
+                        <ion-button (click)="deleteEvent(e.idevento)">Eliminar</ion-button>
                     </div>
                 </div>
 

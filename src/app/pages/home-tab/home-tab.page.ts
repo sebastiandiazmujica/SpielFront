@@ -12,7 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class HomeTabPage implements OnInit {
 
-
+  url: string = "spielback.com";
   eventos = [];
 
   item : EventoOrganizacion;
@@ -54,7 +54,7 @@ export class HomeTabPage implements OnInit {
 
   ionViewDidEnter(){
     console.log("dfskjdf");
-    this.http.get('http://54.208.191.186:8000/eventos').subscribe((data) => {
+    this.http.get('http://' + this.url + ':8000/eventos').subscribe((data) => {
       this.eventos = data["json"];
       console.log(this.eventos);
     })
@@ -65,7 +65,7 @@ export class HomeTabPage implements OnInit {
     this.item.setCupo(cupos-1)
     console.log(this.item.cupos);
     this.http
-    .put('http://54.208.191.186:8000/Update/eventos?id='+evento, JSON.stringify(this.item), this.httpOptions)
+    .put('http://' + this.url + ':8000/Update/eventos?id='+evento, JSON.stringify(this.item), this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)

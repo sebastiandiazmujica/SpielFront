@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IntroGuard } from '../../guards/intro.guard';
-
-
 import { IonicModule } from '@ionic/angular';
-
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [

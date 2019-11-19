@@ -19,6 +19,8 @@ export class CreateEventoPage implements OnInit {
   lugar: AbstractControl;
   fechainicio: AbstractControl;
   fechafin: AbstractControl;
+  url: string = "spielback.com";
+  events: any;
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -85,7 +87,7 @@ export class CreateEventoPage implements OnInit {
     //   catchError(this.handleError)
     // );
     if(this.formgroup.valid){
-      this.http.post('http://spielback.com:8000/create/evento', this.formgroup.value)
+      this.http.post('http://'+ this.url + ':8000/create/evento', this.formgroup.value)
       .subscribe((response)=>{
         console.log('response ',response);
       })
@@ -93,6 +95,5 @@ export class CreateEventoPage implements OnInit {
     }
 
   }
-
 
 }
