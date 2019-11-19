@@ -51,7 +51,7 @@ export class EventoPage implements OnInit {
     }, 2000);
   }
 
-  deleteEvent(id: number): Observable<{}> {
+  deleteEvent(id: number){
     const url = "http://spielback.com:8000/delete/evento?id=" + id;
     //   console.log(url);
     const options = {

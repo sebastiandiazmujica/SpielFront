@@ -18,7 +18,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes, { onSameUrlNavigation: 'reload' }),
+    RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
   declarations: [EventoPage]
@@ -36,12 +36,5 @@ export class EventoPageModule {
   //   //     console.log('my data: ', data);
   //   //   })
   // }
-  ngOnInit(): void {
-    this.router.events.pipe(
-      filter((event: RouterEvent) => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.fetchData();
-    });
-  }
 
 }
